@@ -451,7 +451,7 @@ print("Found Data")
         if (rank == "E-" and gold >= 100000) or
             (rank == "D+" and gold >= 300000) or
             (rank == "C+" and gold >= 1500000) or
-            (rank == "A-" and gold >= 3500000) then
+            (rank == "A-" and gold >= 3300000) then
             rejoinServer()
         end
     end
@@ -1411,9 +1411,7 @@ RunConcurrent(function()
                         performFixedRounds()
                         showOkMessage()
                     else
-                        if (extractedGrade == "E-" and goldParse >= 100000) or (extractedGrade == "D+" and goldParse >= 300000)
-                            or (extractedGrade == "C+" and goldParse >= 1500000) or (extractedGrade == "A-" and goldParse >= 3500000) then
-                            print("กำลังอัพเกรดและไปมิชชั่นที่ยากกว่าเดิม")
+                        if (extractedGrade == "E-" and goldParse >= 100000) then
                             performUntilSilent()
                             showOkMessage()
                             task.wait(0.5)
@@ -1425,19 +1423,10 @@ RunConcurrent(function()
                             end
                             startMission()
                             task.wait(0.5)
-                        else
-                            print("กำลังฟาร์ม ยังอัพเกรดไม่ได้")
-                            createMission(_G.Configs["Mission Difficulty"], "Missions", "Shiganshina", "Skirmish")
-                            for _, modifier in ipairs(_G.Configs["Modifiers"]) do
-                                modifyMission(modifier)
-                                task.wait(0.1)
-                            end
-                            startMission()
                         end
                     end
                 end
             else
-                print("แรงค์ S แล้วฟามยาวว")
                 createMission(_G.Configs["Mission Difficulty"], "Missions", "Shiganshina", "Skirmish")
                 for _, modifier in ipairs(_G.Configs["Modifiers"]) do
                     modifyMission(modifier)
